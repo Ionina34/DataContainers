@@ -81,9 +81,18 @@ public:
 			Temp = Temp->pNext;
 		}
 		delete Temp->pNext;
-		Temp->pNext = 0;
+		Temp->pNext = nullptr;
 	}
-	
+	void erase(int index)
+	{
+		Element* Temp = Head;
+		for (int i = 0; i < index - 1; i++)Temp = Temp->pNext;
+		/*Element* Erased = Head;
+		for (int i = 0; i < index; i++)Erased = Erased->pNext;*/
+		Element* Erased = Temp->pNext;
+		Temp->pNext = Erased->pNext;
+		delete Erased;
+	}
 
 	//                        Methods:
 	void print()const
@@ -122,5 +131,7 @@ void main()
 	cout << "Введите значение добовляемого элемента: "; cin >> value;
 	list.insert(value, index);
 	list.print();
-
+	/*cout << "Введите Индекс удаляемого элемента: "; cin >> index;
+	list.erase(index);
+	list.print();*/
 }
