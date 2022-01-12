@@ -1,11 +1,17 @@
 #pragma once
+
 #include<iostream>
 #include<string>
 using namespace std;
 using std::cout;
 using std::cin;
 using std::endl;
-#define tab "\t"
+
+#define tab "\t"  
+
+/////////////////////////////////////////////////////////////////////////////////////
+//                     Class Declaration (Объявление Класса)                       //
+/////////////////////////////////////////////////////////////////////////////////////
 
 template<typename T>
 class List
@@ -113,3 +119,10 @@ public:
 	void print()const;
 	void reverse_print()const;
 };
+
+/////////////////////////////////////////////////////////////////////////////////////
+////////////        Class Declaration End (Конец Объявление Класса)       ///////////
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<typename T>void print_list(const List<T>& list);
+template<typename T>void reverse_print_list(const List<T>& list);

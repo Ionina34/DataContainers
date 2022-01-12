@@ -1,5 +1,11 @@
 #include"ClassList.h"
 
+/////////////////////////////////////////////////////////////////////////////////////
+///////////////          Class Defintion (Определение Класса)         ///////////////
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+
 template<typename T>List<T>::Element::Element(T Data, Element* pNext, Element* pPrev) :
 	Data(Data), pNext(pNext), pPrev(pPrev)
 {
@@ -360,7 +366,12 @@ template <typename T>void List<T>::reverse_print()const
 	cout << "Количество элементов списка: " << size << endl;
 
 }
+/////////////////////////////////////////////////////////////////////////////////////
+////////////        Class Defintion End (Конец Определение Класса)        ///////////
+/////////////////////////////////////////////////////////////////////////////////////
 
+//                      Non-member function related to class
+//                    (Глобальные функции связфнные с классом):
 template<typename T>void print_list(const List<T>& list)
 {
 	for (typename List<T>::ConstIterator it = list.cbegin(); it != list.cend(); it++)
@@ -377,3 +388,4 @@ template<typename T>void reverse_print_list(const List<T>& list)
 	}
 	cout << endl;
 }
+
