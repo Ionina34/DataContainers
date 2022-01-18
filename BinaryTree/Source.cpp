@@ -23,6 +23,10 @@ protected:
 		{
 			cout << "EDestructor:\t" << this << endl;
 		}
+		bool is_leaf()const
+		{
+			return pLeft == pRight;
+		}
 		friend class Tree;
 		friend class UniqueTree;
 	} *Root;
@@ -41,18 +45,34 @@ public:
 		for (int const* it = il.begin(); it != il.end(); it++)
 			insert(*it, Root);
 	}
+	Tree(const Tree& other) :Tree()
+	{
+		copy(other.Root);
+		cout << "CopyConstructor:\t" << this << endl;
+	}
 	~Tree()
 	{
 		clear(Root);
 		cout << "TDestructor:\t" << this << endl;
 	}
 
+	Tree& operator=(const Tree& other)
+	{
+		if (this == &other)return *this;
+		clear(Root);
+		copy(other.Root);
+		cout << "CopyAssignment:\t" << this << endl;
+		return *this;
+	}
 
 	void insert(int Data)
 	{
 		insert(Data, Root);
 	}
-
+	void erase(int Data)
+	{
+		erase(Data, Root);
+	}
 	void print()const
 	{
 		print(this->Root);
@@ -81,7 +101,7 @@ public:
 	}
 	void clear()
 	{
-		 clear(Root);
+		clear(Root);
 		//Root == nullptr;
 	}
 	int depth()const
@@ -104,6 +124,37 @@ private:
 			else insert(Data, Root->pRight);
 		}
 		//insert(Data, Root);
+	}
+
+void erase(int Data, Element*& Root)
+	{
+		if (Root == nullptr)return;
+		erase(Data,Root->pLeft);
+		erase(Data,Root->pRight);
+		if (Data == Root->Data)
+		{
+			if (Root->is_leaf())
+			{
+				delete Root;
+				Root = nullptr;
+			}
+			else
+			{
+				if (count(Root->pLeft) < count(Root->pRight))
+					//≈сли в девой ветке элементов меньше чем в правой,
+				{
+					//то удал€емое значение подменим минимальным знаением из правой ветки:
+					Root->Data = minValue(Root->pRight);
+					//после чего, удалим это минимальное значение:
+					erase(minValue(Root->pRight), Root->pRight);
+				}
+				else
+				{
+					Root->Data = maxValue(Root->pLeft);
+					erase(maxValue(Root->pLeft), Root->pLeft);
+				}
+			}
+		}
 	}
 
 	int minValue(Element* Root)const
@@ -156,9 +207,17 @@ private:
 	int depth(Element* Root)const
 	{
 		if (Root == nullptr)return 0;
-		else return 
-			depth(Root->pLeft)+1 > depth(Root->pRight)+1 ? 
+		else return
+			depth(Root->pLeft) + 1 > depth(Root->pRight) + 1 ?
 			depth(Root->pLeft) + 1 : depth(Root->pRight) + 1;
+	}
+
+	void copy(Element* Root)
+	{
+		if (Root == nullptr)return;
+		insert(Root->Data, this->Root);
+		copy(Root->pLeft);
+		copy(Root->pRight);
 	}
 
 	void print(Element* Root)const
@@ -204,6 +263,7 @@ public:
 };
 
 //#define BASE_CHECK
+//#define COPY_METHODS_CHECK
 
 void main()
 {
@@ -241,7 +301,22 @@ void main()
 	u_tree.print();
 #endif // BASE_CHECK
 
-	Tree tree = { 50,25,75,16,32,/*48,*/64,80/*,77*/};
+	Tree tree = { 50,25,75,16,32,48,64,80,77,78,85};
+	tree = tree;
 	tree.print();
 	cout << "√лубина дерева: " << tree.depth() << endl;
+#ifdef COPY_METHODS_CHECK
+	Tree tree2 = tree;
+	tree2.print();
+
+	Tree tree3;
+	tree3 = tree2; //CopyAssignment
+	tree3 = tree2;
+	tree3.print();
+#endif // COPY_METHODS_CHECK
+
+	int value;
+	cout << "¬ведите удал€емое значение: "; cin >> value;
+	tree.erase(value);
+	tree.print();
 }
