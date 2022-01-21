@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 using std::cout;
 using std::cin;
 using std::endl;
@@ -141,11 +141,11 @@ void erase(int Data, Element*& Root)
 			else
 			{
 				if (count(Root->pLeft) < count(Root->pRight))
-					//Åñëè â äåâîé âåòêå ýëåìåíòîâ ìåíüøå ÷åì â ïðàâîé,
+					//Ð•ÑÐ»Ð¸ Ð² Ð´ÐµÐ²Ð¾Ð¹ Ð²ÐµÑ‚ÐºÐµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð¼ÐµÐ½ÑŒÑˆÐµ Ñ‡ÐµÐ¼ Ð² Ð¿Ñ€Ð°Ð²Ð¾Ð¹,
 				{
-					//òî óäàëÿåìîå çíà÷åíèå ïîäìåíèì ìèíèìàëüíûì çíàåíèåì èç ïðàâîé âåòêè:
+					//Ñ‚Ð¾ ÑƒÐ´Ð°Ð»ÑÐµÐ¼Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð¿Ð¾Ð´Ð¼ÐµÐ½Ð¸Ð¼ Ð¼Ð¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¼ Ð·Ð½Ð°ÐµÐ½Ð¸ÐµÐ¼ Ð¸Ð· Ð¿Ñ€Ð°Ð²Ð¾Ð¹ Ð²ÐµÑ‚ÐºÐ¸:
 					Root->Data = minValue(Root->pRight);
-					//ïîñëå ÷åãî, óäàëèì ýòî ìèíèìàëüíîå çíà÷åíèå:
+					//Ð¿Ð¾ÑÐ»Ðµ Ñ‡ÐµÐ³Ð¾, ÑƒÐ´Ð°Ð»Ð¸Ð¼ ÑÑ‚Ð¾ Ð¼Ð¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ:
 					erase(minValue(Root->pRight), Root->pRight);
 				}
 				else
@@ -270,19 +270,19 @@ void main()
 	setlocale(LC_ALL, "");
 #ifdef BASE_CHECK
 	int n;
-	cout << "Ââåäèòå êîë-âî ýëåìåíòîâ: "; cin >> n;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»-Ð²Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð²: "; cin >> n;
 	Tree tree;
 	for (int i = 0; i < n; i++)
 	{
 		tree.insert(rand() % 100);
 	}
 	tree.print();
-	cout << "Ìèíèìàëüíîå çíà÷åíèå äåðåâà: " << tree.minValue() << endl;
-	cout << "Ìàêñèìàëüíîå çíà÷åíèå äåðåâà: " << tree.maxValue() << endl;
-	cout << "Êîë-âî ýëåìåíòîâ äåðåâà: " << tree.count() << endl;
-	cout << "Ñóììà ýëåìåíòîâ äåðåâà: " << tree.sum() << endl;
-	cout << "Ñðåäíåå àðèôìåòè÷åñêîå ýëåìåíòîâ äåðåâà: " << tree.avg() << endl;
-	cout << "Ãëóáèíà äåðåâà: " << tree.depth() << endl;
+	cout << "ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð´ÐµÑ€ÐµÐ²Ð°: " << tree.minValue() << endl;
+	cout << "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð´ÐµÑ€ÐµÐ²Ð°: " << tree.maxValue() << endl;
+	cout << "ÐšÐ¾Ð»-Ð²Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð´ÐµÑ€ÐµÐ²Ð°: " << tree.count() << endl;
+	cout << "Ð¡ÑƒÐ¼Ð¼Ð° ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð´ÐµÑ€ÐµÐ²Ð°: " << tree.sum() << endl;
+	cout << "Ð¡Ñ€ÐµÐ´Ð½ÐµÐµ Ð°Ñ€Ð¸Ñ„Ð¼ÐµÑ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð´ÐµÑ€ÐµÐ²Ð°: " << tree.avg() << endl;
+	cout << "Ð“Ð»ÑƒÐ±Ð¸Ð½Ð° Ð´ÐµÑ€ÐµÐ²Ð°: " << tree.depth() << endl;
 
 	UniqueTree u_tree;
 	for (int i = 0; i < n; i++)
@@ -290,12 +290,12 @@ void main()
 		u_tree.insert(rand() % 100);
 	}
 	u_tree.print();
-	cout << "Ìèíèìàëüíîå çíà÷åíèå äåðåâà: " << u_tree.minValue() << endl;
-	cout << "Ìàêñèìàëüíîå çíà÷åíèå äåðåâà: " << u_tree.maxValue() << endl;
-	cout << "Êîë-âî ýëåìåíòîâ äåðåâà: " << u_tree.count() << endl;
-	cout << "Ñóììà ýëåìåíòîâ äåðåâà: " << u_tree.sum() << endl;
-	cout << "Ñðåäíåå àðèôìåòè÷åñêîå ýëåìåíòîâ äåðåâà: " << u_tree.avg() << endl;
-	cout << "Ãëóáèíà äåðåâà: " << u_tree.depth() << endl;
+	cout << "ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð´ÐµÑ€ÐµÐ²Ð°: " << u_tree.minValue() << endl;
+	cout << "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð´ÐµÑ€ÐµÐ²Ð°: " << u_tree.maxValue() << endl;
+	cout << "ÐšÐ¾Ð»-Ð²Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð´ÐµÑ€ÐµÐ²Ð°: " << u_tree.count() << endl;
+	cout << "Ð¡ÑƒÐ¼Ð¼Ð° ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð´ÐµÑ€ÐµÐ²Ð°: " << u_tree.sum() << endl;
+	cout << "Ð¡Ñ€ÐµÐ´Ð½ÐµÐµ Ð°Ñ€Ð¸Ñ„Ð¼ÐµÑ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð´ÐµÑ€ÐµÐ²Ð°: " << u_tree.avg() << endl;
+	cout << "Ð“Ð»ÑƒÐ±Ð¸Ð½Ð° Ð´ÐµÑ€ÐµÐ²Ð°: " << u_tree.depth() << endl;
 
 	u_tree.clear();
 	u_tree.print();
@@ -304,7 +304,7 @@ void main()
 	Tree tree = { 50,25,75,16,32,48,64,80,77,78,85};
 	tree = tree;
 	tree.print();
-	cout << "Ãëóáèíà äåðåâà: " << tree.depth() << endl;
+	cout << "Ð“Ð»ÑƒÐ±Ð¸Ð½Ð° Ð´ÐµÑ€ÐµÐ²Ð°: " << tree.depth() << endl;
 #ifdef COPY_METHODS_CHECK
 	Tree tree2 = tree;
 	tree2.print();
@@ -316,7 +316,7 @@ void main()
 #endif // COPY_METHODS_CHECK
 
 	int value;
-	cout << "Ââåäèòå óäàëÿåìîå çíà÷åíèå: "; cin >> value;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»ÑÐµÐ¼Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ: "; cin >> value;
 	tree.erase(value);
 	tree.print();
 }

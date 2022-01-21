@@ -259,6 +259,7 @@ public:
 		cout << "MoveAssignment:\t" << this << endl;
 	}
 
+
 	//                            Adding elements:
 	void push_front(int Data)
 	{
@@ -400,6 +401,7 @@ void reverse_print_list(const List& list)
 }
 
 //#define BASE_CHECK
+//#define ITERATORS_CHECK
 
 void main()
 {
@@ -428,6 +430,7 @@ void main()
 	list.reverse_print();
 #endif // BASE_CHECK
 
+#ifdef ITERATORS_CHECK
 	List list = { 3,5,8,13,21 };
 	list.print();
 	list.reverse_print();
@@ -443,4 +446,6 @@ void main()
 	cout << endl;
 	print_list(list);
 	reverse_print_list(list);
+#endif // ITERATORS_CHECK
+
 }
