@@ -121,7 +121,7 @@ public:
 			push_back(*it);
 		}
 	}
-	ForwardList(const ForwardList& other):ForwardList()
+	ForwardList(const ForwardList& other) :ForwardList()
 	{
 		for (Element* Temp = other.Head; Temp; Temp = Temp = Temp->pNext)
 			push_back(Temp->Data);
@@ -133,7 +133,7 @@ public:
 		while (Head)(pop_front());
 		cout << "LDestructor:\t" << this << endl;
 	}
-	
+
 	//                               Operator
 	ForwardList& operator=(const ForwardList& other)
 	{
@@ -244,17 +244,34 @@ public:
 			Temp = Temp->pNext; //Переходим на следующий элемент.
 		}*/
 
-		for(Element* Temp=Head; Temp;Temp=Temp->pNext)
+		for (Element* Temp = Head; Temp; Temp = Temp->pNext)
 			cout << Temp << tab << Temp->Data << tab << Temp->pNext << endl;
 
 		cout << "Кол-во элементов списка: " << size << endl;
 		cout << "Общиее кол-во элементов: " << Element::count << endl;
 		//cout << "Общиее кол-во элементов: " << Head->count<< endl;
 	}
-
+	void unique()
+	{
+		int index = 0;
+		Element* Temp = Head;
+		for (int i = 0;i< size; i++)
+		{
+			if (Temp->Data == Temp->pNext->Data)
+			{
+				erase(++index);
+				Temp = Temp->pNext;
+			}
+			else
+			{
+				index++;
+				Temp = Temp->pNext;
+			}
+		}
+	}
 };
 
-ForwardList operator+ (const ForwardList & left, const ForwardList & right)
+ForwardList operator+ (const ForwardList& left, const ForwardList& right)
 {
 	ForwardList cat = left; //CopyConstructor
 	/*for (Element* Temp = right.getHead(); Temp; Temp = Temp->pNext)
@@ -363,10 +380,12 @@ void main()
 	cout << endl;
 #endif // RANGE_BASED_FOR_ARRAY
 
-	ForwardList list = { 3,5,8,13,21 };
+	ForwardList list = { 3,3,5,8,13,13,21,21, };
 	for (int i : list)
 	{
 		cout << i << tab;
 	}
 	cout << endl;
+	list.unique();
+	for (int i : list)cout << i << tab; cout << endl;
 }

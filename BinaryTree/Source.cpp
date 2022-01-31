@@ -109,6 +109,7 @@ public:
 		return depth(Root);
 	}
 private:
+
 	void insert(int Data, Element* Root)
 	{
 		if (this->Root == nullptr)this->Root = new Element(Data);
@@ -125,7 +126,6 @@ private:
 		}
 		//insert(Data, Root);
 	}
-
 void erase(int Data, Element*& Root)
 	{
 		if (Root == nullptr)return;
